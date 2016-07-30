@@ -95,6 +95,12 @@ a {
     padding-top: 1rem;
 }
 
+.project-logo img:hover {
+    width: 12.1rem;
+    -webkit-filter: none;
+    filter: none;
+}
+
 @media (max-width: 992px) {
     .project-logo {
         height: 15rem;
