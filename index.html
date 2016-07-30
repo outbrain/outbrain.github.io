@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="outbrainGithubApp">
 <head>
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
@@ -17,7 +17,7 @@
 
     <title>Outbrain OSS Center</title>
 </head>
-<body>
+<body ng-controller="ProjectsDisplayController">
 
 <div class="main-header">
     <img class="img-fluid m-x-auto d-block" src="/assets/logo.svg"
@@ -40,120 +40,38 @@
     </div>
 </div>
 
-<div class="fluid-container main-projects">
+<div class="fluid-container main-projects" ng-hide="!loading">
+    <h1 class="h1-heading projects-heading text-center loading-projects">Loading Projects...</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fluid-container main-projects" ng-hide="loading">
 
     <h1 class="h1-heading projects-heading text-center">Hero Projects</h1>
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4" ng-repeat="name in heroProjects">
                 <div class="project-container">
-                    <a href="">
+                    <a href="https://github.com/{{outbrainOrg}}/{{name}}">
                         <div class="project-logo">
-                            <img src="assets/ob1k.svg" class="img-fluid m-x-auto d-block" alt="Ob1k - RPC Framework"/>
-
-                            <div class="project-name">Ob1k</div>
+                            <img src="assets/{{name}}.svg" class="img-fluid m-x-auto d-block" alt="{{projectsData.heroProjects[name].description}}"/>
+                            <div class="project-name">{{projectsData.heroProjects[name].originalName}}</div>
                         </div>
                     </a>
 
                     <div class="project-desc">
-                        An async, high-performance RPC framework
-                        <div class="line-divider w-100"></div>
+                        {{projectsData.heroProjects[name].description}}
                         <div class="stats">
-                            <span class="octicon octicon-history"><i>1231</i></span>
-                            <span class="octicon octicon-star"><i>120</i></span>
-                            <span class="octicon octicon-repo-forked"><i>10</i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="project-container">
-                    <div class="project-logo">
-                        <img src="assets/alethea.svg" class="img-fluid m-x-auto d-block" alt="Ob1k - RPC Framework"/>
-
-                        <div class="project-name text-md-center">Alethea</div>
-                    </div>
-                    <div class="project-desc">
-                        An async, high-performance RPC framework
-                        <div class="line-divider w-100"></div>
-                        <div class="stats">
-                            <span class="octicon octicon-history"><i>1231</i></span>
-                            <span class="octicon octicon-star"><i>120</i></span>
-                            <span class="octicon octicon-repo-forked"><i>10</i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="project-container">
-                    <div class="project-logo">
-                        <img src="assets/leonardo.svg" class="img-fluid m-x-auto d-block" alt="Ob1k - RPC Framework"/>
-
-                        <div class="project-name text-md-center">Leonardo</div>
-                    </div>
-                    <div class="project-desc">
-                        An async, high-performance RPC framework
-                        <div class="line-divider w-100"></div>
-                        <div class="stats">
-                            <span class="octicon octicon-history"><i>1231</i></span>
-                            <span class="octicon octicon-star"><i>120</i></span>
-                            <span class="octicon octicon-repo-forked"><i>10</i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="project-container">
-                    <div class="project-logo">
-                        <img src="assets/propogator.svg" class="img-fluid m-x-auto d-block" alt="Ob1k - RPC Framework"/>
-
-                        <div class="project-name text-md-center">Propogator</div>
-                    </div>
-                    <div class="project-desc">
-                        An async, high-performance RPC framework
-                        <div class="line-divider w-100"></div>
-                        <div class="stats">
-                            <span class="octicon octicon-history"><i>1231</i></span>
-                            <span class="octicon octicon-star"><i>120</i></span>
-                            <span class="octicon octicon-repo-forked"><i>10</i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="project-container">
-                    <div class="project-logo">
-                        <img src="assets/orchestrator.svg" class="img-fluid m-x-auto d-block"
-                             alt="Ob1k - RPC Framework"/>
-
-                        <div class="project-name text-md-center">Orchestrator</div>
-                    </div>
-                    <div class="project-desc">
-                        An async, high-performance RPC framework
-                        <div class="line-divider w-100"></div>
-                        <div class="stats">
-                            <span class="octicon octicon-history"><i>1231</i></span>
-                            <span class="octicon octicon-star"><i>120</i></span>
-                            <span class="octicon octicon-repo-forked"><i>10</i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="project-container">
-                    <div class="project-logo">
-                        <img src="assets/gruffalo.svg" class="img-fluid m-x-auto d-block" alt="Ob1k - RPC Framework"/>
-
-                        <div class="project-name text-md-center">Gruffalo</div>
-                    </div>
-                    <div class="project-desc">
-                        An async, high-performance RPC framework
-                        <div class="line-divider w-100"></div>
-                        <div class="stats">
-                            <span class="octicon octicon-history"><i>1231</i></span>
-                            <span class="octicon octicon-star"><i>120</i></span>
-                            <span class="octicon octicon-repo-forked"><i>10</i></span>
+                            <div class="line-divider w-100"></div>
+                            <span><i>{{projectsData.heroProjects[name].language}}</i></span>
+                            <span class="octicon octicon-star"><i>{{projectsData.heroProjects[name].stars}}</i></span>
+                            <span class="octicon octicon-repo-forked"><i>{{projectsData.heroProjects[name].forks}}</i></span>
                         </div>
                     </div>
                 </div>
@@ -162,45 +80,15 @@
     </div>
 </div>
 
-<div class="fluid-container additional-projects">
+<div class="fluid-container additional-projects" ng-hide="loading">
     <h1 class="h1-heading projects-heading text-center">Additional Projects</h1>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-4 col-xs-6">
+            <div class="col-md-3 col-sm-4 col-xs-6" ng-repeat="(name, value) in projectsData.additionalProjects">
                 <div class="additional-project">
-                    <div class="additional-project-name"><a href="#">Swagger-Annotations</a></div>
-                    <div class="additional-project-desc">Annotations lib for swagger</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6">
-                <div class="additional-project">
-                    <div class="additional-project-name"><a href="#">Postit</a></div>
-                    <div class="additional-project-desc">Elegant wrapper for postMessage</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6">
-                <div class="additional-project">
-                    <div class="additional-project-name"><a href="#">Consult</a></div>
-                    <div class="additional-project-desc">A consul cli util</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6">
-                <div class="additional-project">
-                    <div class="additional-project-name"><a href="#">ZookeeperCLI-adUtility</a></div>
-                    <div class="additional-project-desc">Annotations lib for swagger</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6">
-                <div class="additional-project">
-                    <div class="additional-project-name"><a href="#">Swagger-Annotations</a></div>
-                    <div class="additional-project-desc">Annotations lib for swagger</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6">
-                <div class="additional-project">
-                    <div class="additional-project-name"><a href="#">Swagger-Annotations</a></div>
-                    <div class="additional-project-desc">Annotations lib for swagger</div>
+                    <div class="additional-project-name"><a href="https://github.com/{{outbrainOrg}}/{{name}}">{{value.originalName}}</a></div>
+                    <div class="additional-project-desc">{{value.description}}</div>
                 </div>
             </div>
         </div>
@@ -232,9 +120,13 @@
     </div>
 </div>
 
-<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<!-- Dependencies -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+
+<!-- Main app -->
+<script src="/js/app.js"></script>
+
 </body>
 </html>
