@@ -1,19 +1,24 @@
 .main-header {
     padding-top: 0.3rem;
     height: 3.6rem;
-    background: #2c6f90; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2c6f90, #2b2b2b); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2c6f90, #2b2b2b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #2c6f90;
+    background: -webkit-linear-gradient(to right, #2c6f90, #2b2b2b);
+    background: linear-gradient(to right, #2c6f90, #2b2b2b);
 }
 
 .about-outbrain {
     border-bottom: 0.1rem solid #e0dfdf;
+    background-color: #2c2c2d;
+}
+
+.about-outbrain h1 {
+    color: #fafafa;
 }
 
 .about-outbrain-text {
-    font-family: 'Open Sans', sans-serif !important;
-    color: #504e4c;
-    font-size: 1.1rem;
+    font-family: 'Alegreya Sans', sans-serif !important;
+    color: #fafafa;
+    font-size: 1.2rem;
 }
 
 .main-header img {
@@ -32,11 +37,11 @@
 }
 
 .projects-heading {
-    font-size: 3.4rem;
+    font-size: 3.1rem;
     text-align: center;
     padding-top: 2rem;
     font-weight: 100;
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Alegreya Sans', sans-serif !important;
     color: #504e4c;
 }
 
@@ -47,12 +52,12 @@
 
 .project-container {
     border: transparent;
-    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.4);
     border-radius: 0 0 0.2rem 0.2rem;
 }
 
 .project-desc {
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Alegreya Sans', sans-serif !important;
     font-weight: 100;
     font-size: 1.1rem;
     padding: 0.5rem;
@@ -60,7 +65,7 @@
 }
 
 .project-name {
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Alegreya Sans', sans-serif !important;
     font-weight: 100;
     color: #fafafa;
     text-align: center;
@@ -109,7 +114,7 @@ a {
 }
 
 .stats span i {
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Alegreya Sans', sans-serif !important;
     font-style: normal;
     padding-left: 0.2rem;
     padding-right: 0.4rem;
@@ -122,7 +127,7 @@ a {
 }
 
 .additional-project {
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Alegreya Sans', sans-serif !important;
 }
 
 .additional-project-name {
@@ -144,11 +149,11 @@ a {
 
 .links-group a {
     color: #c7c7c7 !important;
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Alegreya Sans', sans-serif !important;
 }
 
 .copyright {
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Alegreya Sans', sans-serif !important;
     text-align: center;
     color: #a7a7a7;
     font-size: 0.8rem;
