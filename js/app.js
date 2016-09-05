@@ -7,7 +7,7 @@ obApp.controller('ProjectsDisplayController', ['$scope', '$http', function ($sco
     var $jq = jQuery.noConflict();
 
     var $outbrainOrg = "outbrain";
-    var $heroProjects = ["ob1k", "orchestrator", "aletheia", "leonardo", "gruffalo", "propagator"];
+    var $heroProjects = ["ob1k", "orchestrator", "aletheia", "leonardo", "gruffalo", "cassibility"];
 
     // Hiding all projects divs until we finish loading data from GitHub
     $scope.loading = true;
@@ -17,6 +17,7 @@ obApp.controller('ProjectsDisplayController', ['$scope', '$http', function ($sco
     $scope.heroProjects = $heroProjects;
     $scope.projectsData = {};
 
+    // Transform from List<Projects> to Map<ProjectName, ProjectDetails>
     var $invertResponse = function (responseData) {
         var invertedResponse = {};
 
@@ -33,7 +34,8 @@ obApp.controller('ProjectsDisplayController', ['$scope', '$http', function ($sco
                 originalName: project.name,
                 forks: project.forks_count,
                 stars: project.stargazers_count,
-                language: project.language,
+                // in case GitHub doesn't know the project lang
+                language: project.language ? project.language : "General",
                 description: project.description
             }
         }
@@ -41,6 +43,7 @@ obApp.controller('ProjectsDisplayController', ['$scope', '$http', function ($sco
         return invertedResponse;
     };
 
+    // Categorize projects by groups
     var $splitProjects = function (projects) {
         var projectsByTypes = {
             hero: {},
@@ -49,6 +52,10 @@ obApp.controller('ProjectsDisplayController', ['$scope', '$http', function ($sco
 
         for (var projectName in projects) {
             if (projects.hasOwnProperty(projectName)) {
+                if ($filterSelfPredicate(projectName)) {
+                    continue;
+                }
+
                 var project = projects[projectName];
                 if ($heroProjects.indexOf(projectName) >= 0) {
                     projectsByTypes.hero[projectName] = project;
@@ -61,6 +68,12 @@ obApp.controller('ProjectsDisplayController', ['$scope', '$http', function ($sco
         return projectsByTypes;
     };
 
+    // Predicate for filtering the GitHub pages project
+    var $filterSelfPredicate = function(projectName) {
+        return projectName === "outbrain.github.io";
+    };
+
+    // Response handler
     var $handleResponse = function (response) {
         var allProjects = $invertResponse(response.data);
         var projectsByTypes = $splitProjects(allProjects);
@@ -70,6 +83,7 @@ obApp.controller('ProjectsDisplayController', ['$scope', '$http', function ($sco
         $scope.loading = false;
     };
 
+    // Error handler
     var $handleError = function (errorResponse) {
         console.log('Failed sending request to GitHub', errorResponse);
         alert('Failed loading projects! Make sure your internet connection is fine and reload.');
