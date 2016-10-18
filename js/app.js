@@ -25,7 +25,7 @@ obApp.controller('ProjectsDisplayController', ['$scope', '$http', function ($sco
             var project = responseData[i];
 
             // We do not want projects without description
-            if (project.description.trim() == "") {
+            if (project.description == null || project.description.trim() == "") {
                 console.log("Project " + project.name + " does not have description! will not be shown");
                 continue;
             }
